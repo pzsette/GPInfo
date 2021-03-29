@@ -1,3 +1,6 @@
+from datetime import datetime, timedelta
+
+
 def convert_moth_to_num(month):
     return {
         'Gennaio': 1,
@@ -34,3 +37,13 @@ def format_motogp(gp):
            +'FP4: '+gp[5]+'\n'\
            +'QUALIFICHE: '+gp[6]+'\n'\
            +'GARA: '+gp[7]
+
+
+def build_race_datetime_with_delay(gp):
+    race_date_from_csv = gp[0]
+    race_time_from_csv = gp[-1]
+    race_month = convert_moth_to_num(race_date_from_csv[3:])
+    race_date = int(race_date_from_csv[:2])
+    race_hour = int(race_time_from_csv[:2])
+    race_minute = int(race_time_from_csv[3:])
+    return datetime(2021, race_month, race_date, race_hour, race_minute) + timedelta(hours=4)

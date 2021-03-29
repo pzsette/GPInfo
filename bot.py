@@ -24,5 +24,6 @@ if __name__ == '__main__':
     disp.add_handler(CommandHandler("calmotogp", calendar_motogp))
     disp.add_handler(CommandHandler("help", help))
 
+
     upd.start_polling()
     upd.idle()
